@@ -8,8 +8,21 @@
 const navBarAnchors = document.querySelector('.nav')
     // console.log(navBarAnchors)
 const navContainer = document.querySelector('.nav-container')
+const logo = document.querySelector('.logo-heading')
 
-navBarAnchors.addEventListener('dblclick', event => {
+// document.querySelector("#id-checkbox").addEventListener("click", function(event) {
+//     document.getElementById("output-box").innerHTML += "Sorry! <code>preventDefault()</code> won't let you check this!<br>";
+//     event.preventDefault();
+// }, false);
+
+navBarAnchors.addEventListener('click', event => {
+    event.preventDefault()
+    alert("no no no no refresh for you")
+})
+
+
+
+logo.addEventListener('dblclick', event => {
     console.log('dbl click is working')
     navContainer.style.backgroundColor ="dodgerblue"
     
@@ -38,7 +51,7 @@ intro.addEventListener('mouseleave', event => {
 })
 
 const introImg = document.querySelector('.intro img')
-    console.log(introImg)
+    // console.log(introImg)
 
 window.addEventListener('scroll', event => {
     console.log("Fun Bus doesnt like to be scrolled past")
@@ -59,7 +72,7 @@ window.addEventListener('resize', event => {
 
 // ~~~~~~Header ELs~~~~~~~~~~~~~~~~~~~
 const footer = document.querySelector('footer p')
-    console.log(footer)
+    // console.log(footer)
 
 footer.addEventListener('contextmenu', event => {
     console.log('footer text selected')
@@ -76,20 +89,27 @@ footer.addEventListener('mouseout', event => {
 // ~~~~~TExt Els~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 const inputValue = document.querySelector('.text-content input')
-    console.log(inputValue)
+    // console.log(inputValue)
 
 const textWords = document.querySelector('.text-content p')
-    console.log(textWords)
+    // console.log(textWords)
 
 
-inputValue.addEventListener('select', event => {
-    console.log('color change of text')
-    textWords.style.color = "#cc00cc"
-})
+// inputValue.addEventListener('select', event => {
+//     console.log('color change of text')
+//     textWords.style.color = "#cc00cc"
+    
+// })
 
-textWords.addEventListener('drag', event =>{
+inputValue.addEventListener('drag', event =>{
     console.log('drag text')
     textWords.style.color = "red"
+    event.stopPropagation()  //? proper use
+    inputValue.addEventListener('select', event => {
+        console.log('color change of text')
+        textWords.style.color = "#cc00cc"
+        
+    })
 })
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
